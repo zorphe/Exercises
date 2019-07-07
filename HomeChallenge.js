@@ -41,55 +41,31 @@ var order = (wordList) => {
         }
     }
 
-    /* simplify relationships */
-
-    // identify if we're able to use a "simple" solution (if so, find/use the last letter, which has no relationships)
-    let lastLetterKey, resolveKeys = [];
-    allLettersDict.forEach((val, key) => {
-        if (!val || val.length == 0) {
-            lastLetterKey = key;
-        } else if (val.length > 1) resolveKeys.push(key);
-    });
-
+    /* simplify/order relationships */
     let output = [];
-    if (resolveKeys.length) {
 
-        // depth-first-search required
-        var stack = [];
-        var visited = [];
+    // depth-first-search
+    var stack = [];
+    var visited = [];
 
-        // recursive helper function
-        const dfs_util = (node) => {
-            if (visited.includes(node)) return;
+    // recursive helper function
+    const dfs_util = (node) => {
+        if (visited.includes(node)) return;
 
-            visited.push(node);
-            stack.push(node);
+        visited.push(node);
+        stack.push(node);
 
-            const neighborNodes = allLettersDict.get(node);
-            neighborNodes.forEach((neighborNode) => {
-                if (!visited.includes(neighborNode)) dfs_util(neighborNode);
-            });
+        const neighborNodes = allLettersDict.get(node);
+        neighborNodes.forEach((neighborNode) => {
+            if (!visited.includes(neighborNode)) dfs_util(neighborNode);
+        });
 
-            stack.pop();
-            output.push(node);
-        };
+        stack.pop();
+        output.push(node);
+    };
 
-        let relationships = [...allLettersDict.keys()];
-        relationships.forEach((rel) => dfs_util(rel));
-    } else {
-        // "simple" solution - only one path.
-        const findSiblingLetterKey = (currVal) => {
-            for (var [key, value] of allLettersDict.entries()) {
-                if (value == currVal) return key;
-            }
-        };
-
-        let currKey = lastLetterKey;
-        while (output.length < allLettersDict.size) {
-            output.push(currKey);
-            currKey = findSiblingLetterKey(currKey);
-        }
-    }
+    let relationships = [...allLettersDict.keys()];
+    relationships.forEach((rel) => dfs_util(rel));
 
     output = output.reverse();
     //console.log(output);
@@ -101,13 +77,13 @@ var order = (wordList) => {
  */
 
 const testArray = ["bca", "aaa", "acb"];
-console.log("[Provided] Test Case [ b a c ]: " + order(testArray));
+console.log("Test Case 1 - [ b a c ]: " + order(testArray));
 
 const testArrayTwo = ["baa", "caa", "cba", "dc"];
-console.log("Test Case [ a , b , c , d ]: " + order(testArrayTwo));
+console.log("Test Case 2 - [ a , b , c , d ]: " + order(testArrayTwo));
 
 const testArrayThree = ["caa", "cab", "cc", "bc", "db"];
-console.log("Test Case [ a , c , b , d ]: " + order(testArrayThree));
+console.log("Test Case 3 - [ a , c , b , d ]: " + order(testArrayThree));
 
 const testArrayFour = ["x", "y", "z"];
-console.log("Test Case [ x, y, z]: " + order(testArrayFour));
+console.log("Test Case 4 - [ x, y, z]: " + order(testArrayFour));
