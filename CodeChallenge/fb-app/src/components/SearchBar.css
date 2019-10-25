@@ -1,0 +1,27 @@
+input,
+select {
+    border: 1px solid grey;
+    border-radius: 10px;
+    display: block;
+    margin: 10px 10%;
+    max-width: 540px;
+    outline: none;
+    padding: 5px;
+    width: 80%;
+}
+
+input::placeholder,
+select::placeholder {
+    color: grey;
+}
+
+input.submitBtn {
+    background: blue;
+    color: white;
+    height: 50px;
+    font-size: 20px;
+}
+
+option:first-child {
+    display: none;
+}
