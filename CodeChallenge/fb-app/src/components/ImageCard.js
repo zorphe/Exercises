@@ -6,26 +6,27 @@ class ImageCard extends React.Component{
     constructor(props){
         super(props);
 
-        this.state = { spans: 0 };
-
         this.imageRef = React.createRef();
     }
 
     componentDidMount(){
-        this.imageRef.current.addEventListener('load', this.setSpans);
+        this.imageRef.current.addEventListener('load', this.onImageLoad);
     }
 
-    setSpans = () => {
-        //grid-row-end
+    onImageLoad = () => {
         const height = this.imageRef.current.clientHeight;
-
-        const spans = Math.ceil(height / 10);
-        console.log('height:' + height + ' , span: ' +  spans);
-        this.setState({ spans: spans })
+        console.log('height:' + height);
     }
 
-    renderSaveState() {
-        return <a></a>
+    renderSaveState(imgWidth) {
+        // check state.
+        let innerText = "Save";
+
+        return (
+            <div className="img-overlay" style={{width: imgWidth + 'px'}}>
+                <div>{ innerText }</div>
+            </div>
+        )
     }
 
     renderTags(tags){
@@ -49,14 +50,14 @@ class ImageCard extends React.Component{
     }
 
     render(){
-        const { comments, favorites, likes, pageURL, tags, type, views, previewURL } = this.props.image;
+        const { comments, favorites, likes, pageURL, tags, type, views, previewURL, previewWidth, previewHeight } = this.props.image;
         
 
         return(
-            <div className="item">
-                <div className="ui medium image">
-                    <img height="250px" width="250px" ref={ this.imageRef } src={ previewURL} />
-                    { this.renderSaveState() }
+            <div className="item" style={{'height': previewHeight + 'px'}}>
+                <div className="ui medium image" style = {{'height': previewHeight + 'px', 'width': '150px' }}>
+                    <img ref={ this.imageRef } alt="" height={ previewHeight } width ={ previewWidth } src={ previewURL} />
+                    { this.renderSaveState(previewWidth) }
                 </div>
     
                 <div className="right-side">

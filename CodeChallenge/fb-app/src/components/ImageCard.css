@@ -28,9 +28,28 @@
     bottom: 5px;
 }
 
+.img-overlay {
+    opacity: 1;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    background-color: orange;
+    color: white;
+}
+
+.img-overlay.saved {
+    background-color: red;
+}
+
 
 /* semantic UI CSS override */
 
 .item {
-    margin: 2em 0px;
+    margin: 2em 0px !important;
+}
+
+.ui.items>.item>.image>img {
+    width: '';
 }

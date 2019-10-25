@@ -25,6 +25,12 @@ input.submitBtn {
     font-size: 20px;
 }
 
+option {
+    color: black;
+    font-weight: normal;
+    font-style: normal;
+}
+
 option:first-child {
     display: none;
 }
