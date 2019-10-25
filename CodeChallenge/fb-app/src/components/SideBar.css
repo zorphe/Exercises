@@ -1,0 +1,10 @@
+.side-bar {
+    border-left: 1px solid lightgrey;
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 20px;
+    position: fixed;
+    bottom: 30%;
+    top: 25px;
+    width: 25%;
+}

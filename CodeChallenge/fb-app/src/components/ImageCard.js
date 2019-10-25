@@ -31,8 +31,8 @@ class ImageCard extends React.Component{
     renderTags(tags){
         let tagsArr = tags.split(", ")
         return (
-            <div>
-                { tagsArr.map((tag ) => <span className="tag-item" key={tag}>{tag}</span> )}
+            <div className="tag-holder">
+                { tagsArr.map((tag ) => <div className="tag-item" key={tag}>{tag}</div> )}
             </div>
         )
     }

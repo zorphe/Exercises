@@ -1,22 +1,25 @@
 input,
 select {
-    border: 1px solid grey;
+    border: 2px solid lightgrey;
     border-radius: 10px;
     display: block;
-    margin: 10px 10%;
-    max-width: 540px;
+    margin: 10px;
+    max-width: 580px;
     outline: none;
-    padding: 5px;
-    width: 80%;
+    padding: 15px;
+    width: 100%;
 }
 
 input::placeholder,
 select::placeholder {
-    color: grey;
+    color: darkgrey;
+    font-style: italic;
+    font-weight: bold;
 }
 
 input.submitBtn {
-    background: blue;
+    background: #551AFF;
+    border: 1px solid darkblue;
     color: white;
     height: 50px;
     font-size: 20px;

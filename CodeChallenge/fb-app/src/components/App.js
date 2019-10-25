@@ -2,6 +2,8 @@ import React from 'react';
 import pixabay from '../api/pixabay';
 import SearchBar from './SearchBar';
 import ImageList from './ImageList';
+import SideBar from './SideBar';
+import './App.css';
 
 class App extends React.Component {
     state = {
@@ -27,8 +29,12 @@ class App extends React.Component {
     render(){
         return (
             <div className ="ui container" style={{marginTop: '10px'}}>
-                <SearchBar onFormSubmit={ this.onSearchSubmit }/>
-                <ImageList images = { this.state.images }/>
+                <div className="main">
+                    <SearchBar onFormSubmit={ this.onSearchSubmit }/>
+                    <ImageList images = { this.state.images }/>
+                </div>
+
+                <SideBar />
             </div>
         )
     }

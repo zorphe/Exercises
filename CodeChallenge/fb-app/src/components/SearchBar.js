@@ -23,7 +23,7 @@ class SearchBar extends React.Component{
     };
 
     renderSelect(){
-        let styleObj = { color : this.state.category === "" ? "grey" : "black" };
+        let styleObj = this.state.category === "" ? { color :"darkgrey", fontWeight: "bold", fontStyle: "italic" } : { color : "black"} ;
 
         return (
             <select value={ this.state.category } onChange={(e) => this.setState({category: e.target.value})} style={ styleObj }>
