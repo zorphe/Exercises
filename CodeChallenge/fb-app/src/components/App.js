@@ -6,9 +6,45 @@ import SideBar from './SideBar';
 import './App.css';
 
 class App extends React.Component {
-    state = {
-        images: [],
-        saved: [] // API ID : API URL (key/value)
+    constructor(props){
+        super(props);
+
+        this.state = {
+            images: [],
+            saved: []
+        };
+
+        this.cleanup = this.cleanup.bind(this);
+    }
+
+    // check local storage for savedImage data
+    componentWillMount(){
+        let existingDataStr = localStorage.getItem('savedImages');
+        if (existingDataStr !== null){
+            let existingDataObj;
+            try {
+                existingDataObj = JSON.parse(existingDataStr);
+
+                this.setState({
+                    saved : existingDataObj
+                });
+            } catch(e){ } // parsing error - ignore data.
+        }
+    }
+
+    componentDidMount(){
+        window.addEventListener('beforeunload', this.cleanup);
+    }
+
+    // store savedImage data into localStorage
+    componentWillUnmount(){
+        this.cleanup();
+        window.removeEventListener('beforeunload', this.cleanup);
+    }
+
+    cleanup(){
+        let savedJSON = JSON.stringify(this.state.saved);
+        if (savedJSON !== '{}') localStorage.setItem('savedImages', savedJSON);
     }
 
     onSearchSubmit = async (term, category) => {
