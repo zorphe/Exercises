@@ -46,8 +46,9 @@ class ImageCard extends React.Component{
     }
 
     render(){
-        const { comments, favorites, likes, pageURL, tags, type, views, previewURL, previewWidth, previewHeight } = this.props.image;
-        
+        const { comments, favorites, likes, tags, previewURL, previewWidth } = this.props.image;
+        let { previewHeight } = this.props.image;
+        previewHeight += 20; //overlay padding
 
         return(
             <div className="item" style={{'height': previewHeight + 'px'}}>

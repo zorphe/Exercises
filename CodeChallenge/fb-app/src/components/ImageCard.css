@@ -1,8 +1,5 @@
-.tag-holder {
-    display: grid;
-    grid-gap: 0px;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 40px;
+.item {
+    min-height: 100px;
 }
 
 .right-side {
@@ -13,28 +10,46 @@
     position: relative;
 }
 
+
+/*.tag-holder {}*/
+
 .tag-item {
     background: rgb(0, 166, 144);
     border: green;
     color: white;
     display: inline-block;
     margin: .4em;
+    margin-top: 0;
     padding: 0 1em;
     text-align: center;
 }
 
 .float-bottom {
     position: absolute;
-    bottom: 5px;
+    bottom: 0px;
+    display: flex;
+    width: 100%;
+    font-weight: bold;
+    font-size: smaller;
+}
+
+.float-bottom span {
+    flex: 1 1 33%;
+    text-align: center;
+}
+
+.float-bottom span i {
+    padding-left: 5px;
 }
 
 .img-overlay {
     background-color: rgb(188, 69, 99);
     color: white;
     cursor: pointer;
+    height: 20px;
     opacity: 1;
     position: absolute;
-    bottom: 0px;
+    /*bottom: 0px;*/
     left: 0px;
     right: 0px;
     text-align: center;
@@ -53,6 +68,7 @@
 
 .item {
     margin: 2em 0px !important;
+    flex-direction: row !important;
 }
 
 .ui.items>.item>.image>img {

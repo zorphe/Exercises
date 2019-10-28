@@ -18,7 +18,9 @@ class App extends React.Component {
     }
 
     // check local storage for savedImage data
-    componentWillMount(){
+    //componentWillMount(){}
+
+    componentDidMount(){
         let existingDataStr = localStorage.getItem('savedImages');
         if (existingDataStr !== null){
             let existingDataObj;
@@ -30,9 +32,7 @@ class App extends React.Component {
                 });
             } catch(e){ } // parsing error - ignore data.
         }
-    }
 
-    componentDidMount(){
         window.addEventListener('beforeunload', this.cleanup);
     }
 
@@ -76,7 +76,7 @@ class App extends React.Component {
 
     render(){
         return (
-            <div className ="container" style={{marginTop: '10px'}}>
+            <div className ="container">
                 <div className="main">
                     <SearchBar onFormSubmit={ this.onSearchSubmit }/>
                     <ImageList images = { this.state.images } savedImages = { this.state.saved } updateSavedImages = { this.updateSavedImages }/>
