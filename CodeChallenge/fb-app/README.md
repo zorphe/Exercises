@@ -1,3 +1,17 @@
+## Task: Replicate a provided mockup
+
+Using: Pixabay API (pictures), and create-react-app
+
+### Guidelines:
+- feel free to make any improvements or changes you want to the mockup
+- display up to the first 10 search results
+- search should be case insensitive and trim whitespace
+- search features a category filter which should happen on the request (on the API's end)
+- allow each search result to be "saved" by the user
+- display the saved items as links in their own section
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
