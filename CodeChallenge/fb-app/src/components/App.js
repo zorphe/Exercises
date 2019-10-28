@@ -76,7 +76,7 @@ class App extends React.Component {
 
     render(){
         return (
-            <div className ="ui container" style={{marginTop: '10px'}}>
+            <div className ="container" style={{marginTop: '10px'}}>
                 <div className="main">
                     <SearchBar onFormSubmit={ this.onSearchSubmit }/>
                     <ImageList images = { this.state.images } savedImages = { this.state.saved } updateSavedImages = { this.updateSavedImages }/>
