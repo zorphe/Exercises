@@ -9,15 +9,9 @@ class ImageCard extends React.Component{
         this.imageRef = React.createRef();
     }
 
-    /*componentDidMount(){
-        this.imageRef.current.addEventListener('load', this.onImageLoad);
-    }
-
-    onImageLoad = () => {
-        const height = this.imageRef.current.clientHeight;
-        console.log('height:' + height);
-    }*/
-
+    /* alternatively, the save/saved overlay could appear on hover for desktop sites.
+        mobile support would require a touch action for it to appear, and this wouldn't be as intuitive. 
+        ==> consider it to be always visible for mobile? */
     renderSaveState(imgWidth) {
         let imageId = this.props.image.id;
         let savedImg = this.props.savedImages.some((image) => image.id === imageId );

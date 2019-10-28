@@ -27,7 +27,7 @@ class SearchBar extends React.Component{
 
         return (
             <select value={ this.state.category } onChange={(e) => this.setState({category: e.target.value})} style={ styleObj }>
-                <option value="" disabled selected>Category...</option>
+                <option value="" disabled>Category...</option>
                 { CATEGORYLIST.map((value ) => <option key={value} value={value}>{value}</option> )}
             </select>
         )

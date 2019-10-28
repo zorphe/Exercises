@@ -27,7 +27,7 @@ select::placeholder {
 }
 
 input.submitBtn {
-    background: #551AFF;
+    background: rgb(63, 1, 210);
     border: 1px solid darkblue;
     color: white;
     height: 50px;

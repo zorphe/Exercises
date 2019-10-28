@@ -8,7 +8,7 @@ const SideBar = (props) => {
         //return <b>items</b>;
         
         let inner = props.savedImages.map((img, idx) => {
-            return <li key={ img.id }><a href={ img.largeImageURL } target="_blank" rel="noopener noreferrer" >#{ img.id } <i /></a></li>
+            return <li key={ img.id }><a href={ img.largeImageURL } target="_blank" rel="noopener noreferrer" >#{ img.id } <i className="external alternate icon"/></a></li>
         })
 
         return <ul>{ inner } </ul>
