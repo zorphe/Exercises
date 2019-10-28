@@ -7,16 +7,15 @@ import './App.css';
 
 class App extends React.Component {
     state = {
-        images: []
+        images: [],
+        saved: [] // API ID : API URL (key/value)
     }
 
     onSearchSubmit = async (term, category) => {
-        // trim + process input.
         // 100 length limit for query [q]
-
         const response = await pixabay.get('', {
             params: { 
-                q : term.trim(), 
+                q : term.trim().replace(/\s+/g,"+"), // trim all excess whitespace
                 category: category, 
                 per_page: 10
             }
@@ -26,15 +25,28 @@ class App extends React.Component {
         this.setState({ images : response.data.hits })
     }
 
+    updateSavedImages = (image, AlreadyInStateArr) => {
+        if (AlreadyInStateArr){ // remove
+            let index = this.state.saved.findIndex((img) => img.id === image.id);
+            this.setState({
+                saved: this.state.saved.filter((_, i) => i !== index)
+            });
+        } else { // add
+            this.setState({
+                saved: [...this.state.saved, image]
+            });
+        }
+    }
+
     render(){
         return (
             <div className ="ui container" style={{marginTop: '10px'}}>
                 <div className="main">
                     <SearchBar onFormSubmit={ this.onSearchSubmit }/>
-                    <ImageList images = { this.state.images }/>
+                    <ImageList images = { this.state.images } savedImages = { this.state.saved } updateSavedImages = { this.updateSavedImages }/>
                 </div>
 
-                <SideBar />
+                <SideBar savedImages = { this.state.saved }/>
             </div>
         )
     }

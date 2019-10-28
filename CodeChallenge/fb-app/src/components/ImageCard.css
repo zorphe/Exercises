@@ -29,13 +29,14 @@
 }
 
 .img-overlay {
+    color: white;
+    cursor: pointer;
     opacity: 1;
     position: absolute;
     bottom: 0px;
     left: 0px;
     right: 0px;
     text-align: center;
-    background-color: orange;
     color: white;
 }
 
@@ -51,5 +52,5 @@
 }
 
 .ui.items>.item>.image>img {
-    width: '';
+    width: auto !important;
 }

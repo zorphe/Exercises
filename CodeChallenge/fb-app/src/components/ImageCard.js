@@ -9,21 +9,23 @@ class ImageCard extends React.Component{
         this.imageRef = React.createRef();
     }
 
-    componentDidMount(){
+    /*componentDidMount(){
         this.imageRef.current.addEventListener('load', this.onImageLoad);
     }
 
     onImageLoad = () => {
         const height = this.imageRef.current.clientHeight;
         console.log('height:' + height);
-    }
+    }*/
 
     renderSaveState(imgWidth) {
-        // check state.
-        let innerText = "Save";
+        let imageId = this.props.image.id;
+        let savedImg = this.props.savedImages.some((image) => image.id === imageId );
+        let innerText = savedImg ? "Saved" : "Save";
+        let classes = "img-overlay " + (savedImg ? "saved" : "");
 
         return (
-            <div className="img-overlay" style={{width: imgWidth + 'px'}}>
+            <div className={ classes } style={{width: imgWidth + 'px'}} onClick={() => this.props.updateSavedImages(this.props.image, savedImg)}>
                 <div>{ innerText }</div>
             </div>
         )
@@ -33,7 +35,7 @@ class ImageCard extends React.Component{
         let tagsArr = tags.split(", ")
         return (
             <div className="tag-holder">
-                { tagsArr.map((tag ) => <div className="tag-item" key={tag}>{tag}</div> )}
+                { tagsArr.map((tag) => <div className="tag-item" key={ tag }>{ tag }</div> )}
             </div>
         )
     }
@@ -42,9 +44,9 @@ class ImageCard extends React.Component{
 
         return (
             <div className="float-bottom">
-                <span>{likes || 0} <i class="thumbs up icon"/></span>
-                <span>{favorites || 0} <i class="star icon"/></span>
-                <span>{comments || 0} <i class="comments icon"/></span>
+                <span>{likes || 0} <i className="thumbs up icon"/></span>
+                <span>{favorites || 0} <i className="star icon"/></span>
+                <span>{comments || 0} <i className="comments icon"/></span>
             </div>
         )
     }
